@@ -32,13 +32,13 @@ public class QueryServlet extends HttpServlet {
              String queryStatement = "";
 
              if (parameter.length() == 2){
-                 queryStatement = queriesHolder.getCountryCodeQuery() + "'" + parameter + "';";
+                 queryStatement = queriesHolder.getCountryCodeQuery(parameter);
                  //out.println("<p>" + queryStatement + "</p>"); TESTING
              } else if (parameter.length() == 1) {
                  out.println("<p>No chance I can find a country with one letter!</p>");
                 //   out.println("<p>" + queryStatement + "</p>"); TESTING
              } else {
-                 queryStatement = queriesHolder.getCountryQuery() + "'" + parameter + "';";
+                 queryStatement = queriesHolder.getCountryQuery(parameter);
                 //   out.println("<p>" + queryStatement + "</p>"); TESTING
              }
 

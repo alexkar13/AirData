@@ -22,14 +22,7 @@
   version="3.1"
   metadata-complete="true">
  <!--Servlets-->
-  <!-- <servlet>
-    <servlet-name>Country Query</servlet-name>
-    <servlet-class>CountryQuery</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>Reports</servlet-name>
-    <servlet-class>ReportsServlet</servlet-class>
-  </servlet> -->
+
   <servlet>
     <servlet-name>QueriesResults</servlet-name>
     <servlet-class>QueryServlet</servlet-class>
@@ -39,15 +32,8 @@
     <servlet-class>ReportServlet</servlet-class>
   </servlet>
 
-    <!-- Servlet Mappings-->
-  <!-- <servlet-mapping>
-    <servlet-name>Country Query</servlet-name>
-    <url-pattern>/query</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Reports</servlet-name>
-    <url-pattern>/reports</url-pattern>
-  </servlet-mapping> -->
+<!--Servlet-mappings-->
+
   <servlet-mapping>
     <servlet-name>QueriesResults</servlet-name>
     <url-pattern>/query</url-pattern>
