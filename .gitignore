@@ -1,0 +1,5 @@
+/WEB-INF/conf/config.properties
+/WEB-INF/classes/ConfigValues.class
+/WEB-INF/classes/QueryServlet.class
+/WEB-INF/classes/ReportServlet.class
+/WEB-INF/classes/SelectQueries.class

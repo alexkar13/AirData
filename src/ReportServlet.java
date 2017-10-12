@@ -22,12 +22,12 @@ public class ReportServlet extends HttpServlet {
             confProperties.loadInput("/../conf/config.properties");
 
             // Some html
-            out.println("<html><head><meta charset='utf-8'><title>Reports Results</title></head><body>");
+            out.println("<html><head><meta charset='utf-8'><title>Reports Results</title><style>body{background-color:#459abf;font-family:Verdana; margin:5% 10%;}</style></head><body>");
             out.println("<h1>Reports Results</h1>");
             out.println("<p>Here you will get the results of the reports that have been asked during the assignment.</p>");
 
             try {
-                // conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/lunatech_db?useSSL=false", "alex", "xxxx");
+                // conn = DriverManager.getConnection("jdbc:mysql://localhost:port/db_name?useSSL=false", "user", "password");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:" + confProperties.getPort() + "/" + confProperties.getDbName() + "?useSSL=false", confProperties.getUser(), confProperties.getPass());
 
                 mostAirStmt = conn.createStatement();
@@ -67,7 +67,6 @@ public class ReportServlet extends HttpServlet {
 
                   // Type of runways per country (surface)
 
-                 //   out.println("Right before executeQuery" + queriesHolder.getSurfaceReports());
                    ResultSet surfReportsResult = surfReportsStmt.executeQuery(queriesHolder.getSurfaceReports());
 
                    //Least Airports html
@@ -82,10 +81,8 @@ public class ReportServlet extends HttpServlet {
 
                    // 10 most common runway identifications (le_ident)
 
-                  //   out.println("Right before executeQuery" + queriesHolder.getSurfaceReports());
                     ResultSet leIdentResult = leIdentStmt.executeQuery(queriesHolder.getLeIdentTopTenReports());
-                    //out.println(queriesHolder.getSurfaceReports());
-                    //Least Airports html
+                    
                     out.println("<h2>10 most common surface types (le_ident)</h2>");
                     //table heading
                     out.println("<table border=1 cellpadding=5><tr><th>Runway Ident (le_ident)</th><th>Number</th></tr>");

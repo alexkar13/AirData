@@ -1,4 +1,3 @@
-// package src;
 // All the mySQL select queries needed for the application are stored here
 // Using getters so that fields remain private
 public class SelectQueries{

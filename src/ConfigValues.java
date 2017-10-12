@@ -1,5 +1,3 @@
-// package src;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +12,6 @@ public class ConfigValues {
 
     InputStream inputStream;
     Properties prop = new Properties();
-    // String propFileName = "/../conf/config.properties";
 
     public void loadInput(String path) throws IOException{
         try{

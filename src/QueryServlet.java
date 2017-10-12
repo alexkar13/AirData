@@ -1,4 +1,3 @@
-// package src;
 import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
@@ -17,17 +16,16 @@ public class QueryServlet extends HttpServlet {
          confProperties.loadInput("/../conf/config.properties");
 
          // Basic Html of the Page
-         out.println("<html><head><meta charset='utf-8'><title>Query Results</title></head><body>");
+         out.println("<html><head><meta charset='utf-8'><title>Query Results</title><style>body{background-color:#459abf;font-family:Verdana; margin-left:10%; margin-right:10%;}</style></head><body>");
          out.println("<h1>Query Results</h1>");
          out.println("<p>A list of all airports and runways per country. Fun fact: Runways are named by a number between 01 and 36, which is generally the magnetic azimuth of the runway's heading in decadegrees.</p>");
-        //  out.println("<p>"+ user.getDbUser() + "</p>");
+
         try {
             // conn = DriverManager.getConnection("jdbc:mysql://localhost:port/db_name?useSSL=false", "user", "password");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:" + confProperties.getPort() + "/" + confProperties.getDbName() + "?useSSL=false", confProperties.getUser(), confProperties.getPass());
-    
+
              stmt = conn.createStatement();
              String parameter = request.getParameter("country");
-             //out.print("<p>Parmeter is: " + parameter + "</p>"); TESTING
 
              //Creating the object which will hold all the queries needed
              SelectQueries queriesHolder = new SelectQueries();
@@ -37,10 +35,8 @@ public class QueryServlet extends HttpServlet {
 
              if (parameter.length() == 2){
                  queryStatement = queriesHolder.getCountryCodeQuery(parameter);
-                 //out.println("<p>" + queryStatement + "</p>"); TESTING
              } else if (parameter.length() == 1) {
                  out.println("<p>No chance I can find a country with one letter!</p>");
-                //   out.println("<p>" + queryStatement + "</p>"); TESTING
              } else {
                  queryStatement = queriesHolder.getCountryQuery(parameter);
                 //   out.println("<p>" + queryStatement + "</p>"); TESTING
@@ -50,13 +46,7 @@ public class QueryServlet extends HttpServlet {
               out.println("<button><a href='http://localhost:9999/Lunatech-Assessment/index.jsp'>Back</a></button>");
 
              ResultSet dataHolder = stmt.executeQuery(queryStatement);
-            //  if(dataHolder != null){ TESTING
-            //      out.println("<p>dataHolder is loaded!</p>"); TESTING
-            //  }else{ TESTING
-            //      out.println("<p>dataHolder is empty!</p>"); TESTING
-            //  } TESTING
 
-            //  out.println("<p>Here are the results!</p>"); TESTING
              // Outputing the table headers
              out.println("<table border = 1 cellpadding = 5><tr><th>Aiport Name</th><th>Runway le</th><th>Runway he</th></tr>");
 
@@ -72,7 +62,6 @@ public class QueryServlet extends HttpServlet {
              }
              out.println("<hr>");
              out.println("</body></html>");
-
 
         } catch (SQLException ex){
             ex.printStackTrace();
